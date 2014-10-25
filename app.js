@@ -2,7 +2,7 @@
 var d3 = require('d3'),
     jsdom = require('jsdom'),
     fs = require('fs'),
-    htmlStub = '<html><head></head><body><div id="dataviz-container"></div><script src="js/d3.min.js"></script></body></html>'
+    htmlStub = '<html><head></head><style>body {font: 10px sans-serif;}.axis path,.axis line {fill: none;stroke: #000;shape-rendering: crispEdges;}.area {fill: steelblue;}</style><body><div id="dataviz-container"></div><script src="js/d3.min.js"></script></body></html>'
 
 jsdom.env({
     features: {
@@ -96,7 +96,7 @@ jsdom.env({
                 .text("Price ($)");
             
             var svgsrc = window.document.querySelector('html').innerHTML;
-            console.log(svgsrc);
+
             fs.writeFile('index.html', svgsrc, function (err) {
                 if (err) {
                     console.log('error saving document', err)
